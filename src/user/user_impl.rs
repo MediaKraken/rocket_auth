@@ -12,7 +12,7 @@ impl User {
     /// In case the user is authenticated,
     /// you can change it more easily with [`change_password`](`super::auth::Auth::change_password`).
     /// This function will fail in case the password is not secure enough.
-    /// 
+    ///
     /// ```rust
     /// # use rocket::{State, post};
     /// # use rocket_auth::{Error, Users};
@@ -140,12 +140,12 @@ impl<'r> FromRequest<'r> for AdminUser {
                 return Outcome::Success(AdminUser(user));
             }
         }
-        Outcome::Failure((Status::Unauthorized, Error::UnauthorizedError))
+        Outcome::Failure((Status::Forbidden, Error::UnauthorizedError))
     }
 }
 
-use std::ops::*;
 use argon2::verify_encoded;
+use std::ops::*;
 
 impl Deref for AdminUser {
     type Target = User;
