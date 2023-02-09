@@ -44,7 +44,7 @@ futures= "0.3.21"
 
 
 [dependencies.sqlx]
-version = "0.6.0"
+version = "0.5.13"
 optional = true
 features = ["postgres", "runtime-tokio-rustls"]
 
